@@ -109,6 +109,16 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-health</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.tkit.quarkus</groupId>
+            <artifactId>tkit-quarkus-jpa</artifactId>
+          </dependency>
+        <!-- Hibernate ORM specific dependencies -->
+        <!-- <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-hibernate-orm</artifactId>
+            <version>2.0.0.Final</version>
+        </dependency> -->
         <!-- test dependencies -->
         <dependency>
             <groupId>io.quarkus</groupId>

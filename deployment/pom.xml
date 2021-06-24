@@ -39,6 +39,10 @@
             <artifactId>tkit-quarkus-import</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.tkit.quarkus</groupId>
+            <artifactId>tkit-quarkus-jpa</artifactId>
+          </dependency>
     </dependencies>
 
     <build>

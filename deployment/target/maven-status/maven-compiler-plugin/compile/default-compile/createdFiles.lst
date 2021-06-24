@@ -1,4 +1,0 @@
-META-INF/quarkus-javadoc.properties
-org/tkit/quarkus/importer/QuarkusImportProcessor.class
-org/tkit/quarkus/importer/QuarkusImportProcessor$$accessor.class
-META-INF/quarkus-build-steps.list
