@@ -1,0 +1,7 @@
+---
+metadata:
+  built-with-quarkus-core: "io.quarkus:quarkus-core:1.11.6.Final"
+group-id: "org.tkit.quarkus"
+artifact-id: "tkit-quarkus-import"
+version: "1.0.0-SNAPSHOT"
+name: "TKit Import Quarkus - Runtime"

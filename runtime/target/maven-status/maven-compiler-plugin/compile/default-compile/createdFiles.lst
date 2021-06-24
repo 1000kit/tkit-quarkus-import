@@ -1,0 +1,7 @@
+org/tkit/quarkus/importer/ImportConfig$$accessor.class
+org/tkit/quarkus/importer/ImportConfig.class
+org/tkit/quarkus/importer/ImportService.class
+org/tkit/quarkus/importer/ImportRecorder.class
+org/tkit/quarkus/importer/ImportConfigInitiable.class
+META-INF/quarkus-javadoc.properties
+META-INF/quarkus-config-roots.list
