@@ -18,28 +18,23 @@
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-vertx</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
             <artifactId>quarkus-jackson</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-rest-client-mutiny</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.tkit.quarkus</groupId>
-            <artifactId>tkit-quarkus-jpa</artifactId>
+            <artifactId>quarkus-hibernate-orm</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.jboss</groupId>
-            <artifactId>jandex</artifactId>
-            <version>1.0.0.Beta5</version>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-jdbc-postgresql</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.tkit.quarkus</groupId>
+            <artifactId>tkit-quarkus-jpa</artifactId>            
         </dependency>
     </dependencies>
 
@@ -83,6 +78,11 @@
                             <groupId>io.quarkus</groupId>
                             <artifactId>quarkus-extension-processor</artifactId>
                             <version>${quarkus.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>

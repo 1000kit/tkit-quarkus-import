@@ -9,7 +9,7 @@ import lombok.Data;
 @Table(name = "MASTER_DATA_TABLE")
 @Entity
 @Data
-public class MasterDataRule {
+public class MasterDataRuleEntity  {
 
     @Id
     private String key;

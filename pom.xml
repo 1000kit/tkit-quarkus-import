@@ -24,6 +24,7 @@
         <javadoc-plugin.version>3.2.0</javadoc-plugin.version>
         <gpg-plugin.version>1.6</gpg-plugin.version>
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+        <lombok.version>1.18.20</lombok.version>
     </properties>
 
     <modules>
@@ -54,6 +55,7 @@
             <dependency>
                 <groupId>io.quarkus</groupId>
                 <artifactId>quarkus-jdbc-postgresql</artifactId>
+                <version>2.0.0.Final</version>
             </dependency>
             <dependency>
                 <groupId>org.tkit.quarkus</groupId>
@@ -63,15 +65,9 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.20</version>
+                <version>${lombok.version}</version>
                 <scope>provided</scope>
             </dependency>
-            <!-- Hibernate ORM specific dependencies -->
-            <!-- <dependency>
-                <groupId>io.quarkus</groupId>
-                <artifactId>quarkus-hibernate-orm</artifactId>
-                <version>2.0.0.Final</version>
-            </dependency> -->
         </dependencies>
     </dependencyManagement>
     <build>

@@ -1,6 +1,8 @@
- [
-     {
-         "key": "param_key",
-         "value": "param_value"
-     }
- ]
+[
+    {
+        "id": "xyz",
+        "name": "Test parameter",
+        "key": "param_key",
+        "value": "param_value"
+    }
+]

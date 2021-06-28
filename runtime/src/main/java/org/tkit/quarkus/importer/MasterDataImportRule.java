@@ -12,12 +12,12 @@ public class MasterDataImportRule {
     }
 
     private String sourceKey;
-    private String targetTable;
     private String sourceFilePath;
     private DataOperation dataOperation;
+    private Class<?> classType;
 
-    public MasterDataImportRule(String sourceKey, String targetTable) {
+    public MasterDataImportRule(String sourceKey, Class<?> classType) {
         this.sourceKey = sourceKey;
-        this.targetTable = targetTable;
+        this.classType = classType;
     }
 }
