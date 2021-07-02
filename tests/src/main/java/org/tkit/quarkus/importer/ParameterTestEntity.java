@@ -1,5 +1,6 @@
 package org.tkit.quarkus.importer;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -11,6 +12,7 @@ import lombok.Data;
 @Table(name = "param_table")
 @Entity
 @Data
+@ApplicationScoped
 public class ParameterTestEntity extends TraceableEntity{
 
     String name;

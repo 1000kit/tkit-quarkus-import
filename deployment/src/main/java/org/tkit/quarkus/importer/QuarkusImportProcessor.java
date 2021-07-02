@@ -22,6 +22,7 @@ import io.quarkus.deployment.annotations.ExecutionTime;
 import io.quarkus.deployment.annotations.Record;
 import io.quarkus.deployment.builditem.CombinedIndexBuildItem;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
+import io.quarkus.hibernate.orm.runtime.HibernateOrmRecorder;
 import io.quarkus.runtime.ApplicationConfig;
 
 class QuarkusImportProcessor {
@@ -41,9 +42,9 @@ class QuarkusImportProcessor {
     @BuildStep
     @Record(ExecutionTime.RUNTIME_INIT)
     public void configure(CombinedIndexBuildItem index, BeanContainerBuildItem beanContainer, ImportRecorder recorder,
-            ApplicationConfig appConfig, ImportConfig importConfig) throws Exception {
+            ApplicationConfig appConfig, ImportConfig importConfig, HibernateOrmRecorder hibernateOrmRecorder) throws Exception {
         BeanContainer container = beanContainer.getValue();
-        recorder.executeMasterDataImportRules(container, appConfig, importConfig);
+        recorder.executeMasterDataImportRules(container, appConfig, importConfig, hibernateOrmRecorder);
     }
 
     @BuildStep
