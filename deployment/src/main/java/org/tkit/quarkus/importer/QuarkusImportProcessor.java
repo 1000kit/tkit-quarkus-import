@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.persistence.Entity;
 
+import io.quarkus.hibernate.orm.deployment.PersistenceProviderSetUpBuildItem;
 import org.jboss.jandex.AnnotationInstance;
 import org.jboss.jandex.AnnotationTarget;
 import org.jboss.jandex.DotName;
@@ -27,7 +28,7 @@ import io.quarkus.runtime.ApplicationConfig;
 
 class QuarkusImportProcessor {
 
-    private static final String FEATURE = "quarkus-import";
+    private static final String FEATURE = "tkit-quarkus-import";
 
     private static final Logger log = Logger.getLogger(QuarkusImportProcessor.class);
 
@@ -41,15 +42,16 @@ class QuarkusImportProcessor {
 
     @BuildStep
     @Record(ExecutionTime.RUNTIME_INIT)
-    public void configure(CombinedIndexBuildItem index, BeanContainerBuildItem beanContainer, ImportRecorder recorder,
-            ApplicationConfig appConfig, ImportConfig importConfig, HibernateOrmRecorder hibernateOrmRecorder) throws Exception {
+    public void configure(BeanContainerBuildItem beanContainer, ImportDataRecorder recorder,
+                          ApplicationConfig appConfig, ImportDataConfig importConfig,
+                          @SuppressWarnings("unused") List<PersistenceProviderSetUpBuildItem> persistenceUnitsStarted) throws Exception {
         BeanContainer container = beanContainer.getValue();
-        recorder.executeMasterDataImportRules(container, appConfig, importConfig, hibernateOrmRecorder);
+        recorder.executeMasterDataImportRules(container, appConfig, importConfig);
     }
 
     @BuildStep
     @Record(ExecutionTime.STATIC_INIT)
-    public void test(CombinedIndexBuildItem index, ImportRecorder recorder) throws Exception {
+    public void test(CombinedIndexBuildItem index, ImportDataRecorder recorder) throws Exception {
         Collection<AnnotationInstance> annotations = index.getIndex().getAnnotations(MASTER_DATA_ANNOTATION);
 
         Map<String, String> classes = new HashMap<>();

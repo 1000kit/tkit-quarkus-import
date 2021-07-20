@@ -7,8 +7,8 @@ import io.quarkus.runtime.annotations.ConfigItem;
 import io.quarkus.runtime.annotations.ConfigPhase;
 import io.quarkus.runtime.annotations.ConfigRoot;
 
-@ConfigRoot(name = "import-config", phase = ConfigPhase.BOOTSTRAP)
-public class ImportConfig {
+@ConfigRoot(name = "import-data", phase = ConfigPhase.BOOTSTRAP)
+public class ImportDataConfig {
 
     /**
      * If set to true, the application will attempt to look up the configuration from Consul
@@ -39,7 +39,11 @@ public class ImportConfig {
          * The operation to perform when the md5-hash of the file differs from the last imported one
          */
         @ConfigItem
-        String operation;
+        DataOperation operation;
 
+    }
+
+    public enum DataOperation {
+        REPLACE, IGNORE_NEW
     }
 }

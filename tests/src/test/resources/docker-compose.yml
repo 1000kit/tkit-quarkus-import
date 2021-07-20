@@ -1,0 +1,34 @@
+version: "2.4"
+services:
+  tkit-quarkus-import-db:
+    container_name: tkit-quarkus-import-db
+    image: postgres:10.5
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: db
+      POSTGRES_PASSWORD: db
+    labels:
+      - "test.Wait.forLogMessage.regex=.*database system is ready to accept connections.*\\s"
+      - "test.Wait.forLogMessage.times=2"
+      - "test.log=true"
+      - "test.property.quarkus.datasource.jdbc.url=jdbc:postgresql://$${host:tkit-quarkus-import-db}:$${port:tkit-quarkus-import-db:5432}/db?sslmode=disable"
+    ports:
+      - "5432:5432"
+    networks:
+      - test
+  tkit-quarkus-import-tests:
+    container_name: tkit-quarkus-import-tests
+    image: tkit-quarkus-import-tests:latest
+    ports:
+      - "8080:8080"
+    labels:
+      - "test.unit=false"
+      - "test.priority=200"
+      - "test.image.pull=DEFAULT"
+      - "test.Wait.forLogMessage.regex=.*Installed features:.*"
+      - "test.Wait.forLogMessage.times=1"
+      - "test.log=true"
+    networks:
+      - test
+networks:
+  test:
