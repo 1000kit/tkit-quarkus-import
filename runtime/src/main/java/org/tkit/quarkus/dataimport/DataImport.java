@@ -1,4 +1,4 @@
-package org.tkit.quarkus.importer;
+package org.tkit.quarkus.dataimport;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface ImportMasterData {
+public @interface DataImport {
 
-    String key();
+    String value();
 }

@@ -9,7 +9,8 @@
     </parent>
 
     <artifactId>tkit-quarkus-import</artifactId>
-    <name>TKit Import Quarkus - Runtime</name>
+    <name>tkit-quarkus-import</name>
+    <description>Handle your database data import with tkit-quarkus-import</description>
 
     <dependencies>
         <dependency>
@@ -18,50 +19,38 @@
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-jackson</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
             <artifactId>quarkus-hibernate-orm</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-jdbc-postgresql</artifactId>
         </dependency>
+        <!-- DEV console dependencies -->
         <dependency>
-            <groupId>org.tkit.quarkus</groupId>
-            <artifactId>tkit-quarkus-jpa</artifactId>            
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-web</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-vertx-http</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.jboss.jandex</groupId>
-                <artifactId>jandex-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>make-index</id>
-                        <goals>
-                            <goal>jandex</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>io.quarkus</groupId>
                 <artifactId>quarkus-bootstrap-maven-plugin</artifactId>
                 <version>${quarkus.version}</version>
                 <executions>
                     <execution>
+                        <id>generate-extension-descriptor</id>
                         <goals>
                             <goal>extension-descriptor</goal>
                         </goals>
-                        <phase>compile</phase>
+                        <phase>process-resources</phase>
                         <configuration>
                             <deployment>${project.groupId}:${project.artifactId}-deployment:${project.version}
                             </deployment>
@@ -70,7 +59,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <annotationProcessorPaths>
@@ -78,11 +66,6 @@
                             <groupId>io.quarkus</groupId>
                             <artifactId>quarkus-extension-processor</artifactId>
                             <version>${quarkus.version}</version>
-                        </path>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>${lombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>

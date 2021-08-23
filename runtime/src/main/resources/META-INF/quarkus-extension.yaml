@@ -1,0 +1,11 @@
+---
+name: "tkit-quarkus-import"
+metadata:
+  keywords:
+    - "import"
+    - "database"
+    - "data"
+  guide: "https://1000kit.gitlab.io/guides/"
+  categories:
+    - "data"
+  status: "preview"

@@ -1,0 +1,52 @@
+{#include main}
+{#style}
+.annotation {
+color: gray;
+}
+{/style}
+{#title}Data import logs{/title}
+{#body}
+<table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Created</th>
+        <th scope="col">Modified</th>
+        <th scope="col">File</th>
+        <th scope="col">MD5</th>
+        <th scope="col">Error</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {#for item in info:logs}
+    <tr>
+        <td>
+            {item.id}
+        </td>
+        <td>
+            {item.creationDate}
+        </td>
+        <td>
+            {item.modificationDate}
+        </td>
+        <td>
+            {item.file}
+        </td>
+        <td>
+            {item.md5}
+        </td>
+        <td>
+            {item.error}
+        </td>
+        <td>
+            <form method="post"  enctype="application/x-www-form-urlencoded">
+                <input type="hidden" name="name" value="{item.id}">
+                <input id="clear" type="submit" class="btn btn-primary btn-sm" value="Delete" >
+            </form>
+        </td>
+        {/for}
+    </tbody>
+</table>
+{/body}
+{/include}

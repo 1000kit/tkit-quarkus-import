@@ -1,4 +1,4 @@
-package org.tkit.quarkus.importer;
+package org.tkit.quarkus.test;
 
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
@@ -9,7 +9,7 @@ import javax.ws.rs.core.Response;
 import static io.restassured.RestAssured.given;
 
 @QuarkusTest
-public class ImportDataRestTest extends AbstractTest {
+public class DataImportRestTest extends AbstractTest {
 
     @Test
     public void testHealthCheck() {
@@ -20,6 +20,4 @@ public class ImportDataRestTest extends AbstractTest {
                 .then()
                 .statusCode(Response.Status.OK.getStatusCode());
     }
-
-
 }
