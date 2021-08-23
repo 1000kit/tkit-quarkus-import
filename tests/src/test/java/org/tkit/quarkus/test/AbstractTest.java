@@ -1,4 +1,4 @@
-package org.tkit.quarkus.importer;
+package org.tkit.quarkus.test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
