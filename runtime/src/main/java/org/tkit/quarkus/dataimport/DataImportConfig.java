@@ -1,6 +1,7 @@
 package org.tkit.quarkus.dataimport;
 
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.Map;
 
 public class DataImportConfig {
@@ -29,5 +30,15 @@ public class DataImportConfig {
 
     public Map<String, String> getMetadata() {
         return metadata;
+    }
+
+    @Override
+    public String toString() {
+        return "Config{" +
+                "key='" + key + '\'' +
+                ",file=" + file +
+                ",md5='" + md5 + '\'' +
+                ",metadata=" + metadata +
+                '}';
     }
 }

@@ -59,5 +59,15 @@ public class DataImportRuntimeConfig {
         @ConfigItem(name = "stop-at-error", defaultValue = "false")
         boolean stopAtError = false;
 
+        @Override
+        public String toString() {
+            return "Configuration{" +
+                    "bean='" + bean + '\'' +
+                    ",file='" + file + '\'' +
+                    ",metadata=" + metadata +
+                    ",enabled=" + enabled +
+                    ",stopAtError=" + stopAtError +
+                    '}';
+        }
     }
 }
