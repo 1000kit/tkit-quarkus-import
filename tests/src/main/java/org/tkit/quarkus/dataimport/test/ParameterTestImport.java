@@ -7,6 +7,7 @@ import org.tkit.quarkus.dataimport.DataImportConfig;
 import org.tkit.quarkus.dataimport.DataImportService;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -17,9 +18,13 @@ public class ParameterTestImport implements DataImportService {
     ParameterTestEntityDAO dao;
 
     @Inject
+    UserDAO userDAO;
+
+    @Inject
     ObjectMapper mapper;
 
     @Override
+    @Transactional(Transactional.TxType.REQUIRES_NEW)
     public void importData(DataImportConfig config) {
         System.out.println("File: " + config.getFile());
         System.out.println("MD5: " + config.getMD5());
@@ -27,6 +32,7 @@ public class ParameterTestImport implements DataImportService {
         System.out.println("Data: \n" + new String(config.getData(), StandardCharsets.UTF_8));
 
         try {
+            dao.deleteAll();
             JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, ParameterTestEntity.class);
             List<ParameterTestEntity> entries = mapper.readValue(config.getData(), type);
             dao.create(entries);

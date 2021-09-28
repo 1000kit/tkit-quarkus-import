@@ -78,14 +78,17 @@ public class DataImportInvoker {
 
         // check the MD5
         if (log.getMd5() != null && Objects.equals(param.md5, log.getMd5())) {
-            LOGGER.info("No changes found in the data import file. Key: " + key + " file: " + config.file);
-            return;
+            if ((log.getError() == null || log.getError().isBlank()) || !config.retryErrorImport) {
+                LOGGER.info("No changes found in the data import file. Key: " + key + " file: " + config.file);
+                return;
+            }
         }
 
         // call data import service
         log.setModificationDate(LocalDateTime.now());
         log.setMd5(param.md5);
         log.setFile(param.file.toString());
+        log.setError(null);
         try {
             InjectableBean<DataImportService> bi = Arc.container().bean(bean);
             DataImportService service = Arc.container().instance(bi).get();
@@ -99,11 +102,6 @@ public class DataImportInvoker {
         }
     }
 
-    @Transactional(Transactional.TxType.REQUIRES_NEW)
-    private void create(DataImportLog log) {
-        em.persist(log);
-        em.flush();
-    }
     private static String createChecksum(byte[] data) throws RuntimeException {
         try {
             MessageDigest md5 = MessageDigest.getInstance("MD5");

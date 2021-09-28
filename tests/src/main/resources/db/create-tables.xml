@@ -23,5 +23,20 @@
             <column name="key" type="VARCHAR(255)"/>
             <column name="value" type="VARCHAR(255)"/>
         </createTable>
+
+        <createTable tableName="USER_TABLE">
+            <column name="guid" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_pkey"/>
+            </column>
+            <column name="creationdate" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creationuser" type="VARCHAR(255)"/>
+            <column name="modificationdate" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="modificationuser" type="VARCHAR(255)"/>
+            <column name="optlock" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
     </changeSet>
 </databaseChangeLog>

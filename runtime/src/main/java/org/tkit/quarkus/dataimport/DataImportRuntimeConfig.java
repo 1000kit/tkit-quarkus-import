@@ -59,6 +59,12 @@ public class DataImportRuntimeConfig {
         @ConfigItem(name = "stop-at-error", defaultValue = "false")
         boolean stopAtError = false;
 
+        /**
+         * If set to false, the application will not retry error import.
+         */
+        @ConfigItem(name = "retry-error-import", defaultValue = "true")
+        boolean retryErrorImport = true;
+
         @Override
         public String toString() {
             return "Configuration{" +
