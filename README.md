@@ -53,6 +53,19 @@ Or embedded it in the project from file [create-log-table](runtime/src/main/reso
 ```
 Example [changelog.xml](tests/src/main/resources/db/changeLog.xml)
 
+Flyway sql script:
+```sql
+CREATE TABLE DATAIMPORTLOG (
+    ID VARCHAR(255) NOT NULL,
+    CREATIONDATE TIMESTAMP WITHOUT TIME ZONE,
+    MODIFICATIONDATE TIMESTAMP WITHOUT TIME ZONE,
+    FILE VARCHAR(255),
+    MD5 VARCHAR(255),
+    ERROR VARCHAR(255),
+    CONSTRAINT DATAIMPORTLOG_PKEY PRIMARY KEY (ID)
+);
+```
+
 Create bean with `@DataImport("my-import-key")` bean which implements the `DataImportService` interface.
 Example bean: [ParameterTestImport](tests/src/main/java/org/tkit/quarkus/dataimport/test/ParameterTestImport.java)
 ```java

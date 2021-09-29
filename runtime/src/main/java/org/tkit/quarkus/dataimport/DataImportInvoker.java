@@ -31,8 +31,8 @@ public class DataImportInvoker {
     @Inject
     EntityManager em;
 
-    @Transactional(Transactional.TxType.REQUIRED)
-    public void processItem(String key, String bean, DataImportRuntimeConfig.DataImportConfiguration config) throws Exception {
+    @Transactional(value = Transactional.TxType.REQUIRED, dontRollbackOn = {DontRollbackException.class})
+    public void processItem(String key, String bean, DataImportRuntimeConfig.DataImportConfiguration config, DataImportRuntimeConfig rootConfig) throws Exception {
         // check if the data import fo the key is enabled
         if (!config.enabled) {
             LOGGER.info("Data import for key: " + key + " is disabled.");
@@ -94,8 +94,12 @@ public class DataImportInvoker {
             DataImportService service = Arc.container().instance(bi).get();
             service.importData(param);
         } catch (Exception ex) {
-            log.setError(ex.getMessage());
-            throw ex;
+            String msg = ex.getMessage();
+            if (msg != null) {
+                msg = msg.substring(0, Math.min(msg.length(), rootConfig.errorMsgLength));
+            }
+            log.setError(msg);
+            throw new DontRollbackException(msg, ex);
         } finally {
             em.merge(log);
             em.flush();
@@ -120,4 +124,10 @@ public class DataImportInvoker {
         }
     }
 
+    public static class DontRollbackException extends Exception {
+
+        DontRollbackException(String msg, Throwable cause) {
+            super(msg, cause);
+        }
+    }
 }

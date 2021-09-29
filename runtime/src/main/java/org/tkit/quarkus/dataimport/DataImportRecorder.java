@@ -44,7 +44,7 @@ public class DataImportRecorder {
 
                     // process data import item
                     try {
-                        invoker.processItem(item.getKey(), beanRef, itemConfig);
+                        invoker.processItem(item.getKey(), beanRef, itemConfig, config);
                     } catch (Exception e) {
                         if (itemConfig.stopAtError) {
                             LOGGER.error("Error data import. Bean : " + item.getValue() + " key: " + item.getKey() + " error: " + e.getMessage(), e);

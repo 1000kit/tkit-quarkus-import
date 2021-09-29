@@ -16,6 +16,11 @@ public class DataImportRuntimeConfig {
     @ConfigItem(name = "enabled", defaultValue = "true")
     boolean enabled = true;
 
+    /**
+     * Error message length in the database
+     */
+    @ConfigItem(name = "error-msg-length", defaultValue = "255")
+    int errorMsgLength = 255;
 
     /**
      * All configured Data Import Configurations 
