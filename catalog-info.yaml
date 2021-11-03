@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tkit-quarkus-import
+  description: Quarkus extension for automated data import(init data, master data)
+spec:
+  type: library
+  lifecycle: production
+  owner: 1000kit
+  system: 1000kit-quarkus-libs
+  tags:
+    - java
+    - quarkus
+    - lib
+    - import
+    - extension
