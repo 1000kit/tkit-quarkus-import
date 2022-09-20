@@ -51,7 +51,7 @@
         <source-plugin.version>3.2.0</source-plugin.version>
         <javadoc-plugin.version>3.2.0</javadoc-plugin.version>
         <gpg-plugin.version>1.6</gpg-plugin.version>
-        <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+        <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
         <lombok.version>1.18.20</lombok.version>
     </properties>
 
