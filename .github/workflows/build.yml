@@ -9,3 +9,5 @@ jobs:
   java:
     uses: 1000kit/tkit-ci-java/.github/workflows/build.yml@main
     secrets: inherit
+    with:
+      java-version: '11'
