@@ -73,7 +73,7 @@
             <dependency>
                 <groupId>org.tkit.quarkus</groupId>
                 <artifactId>tkit-quarkus-log-rs</artifactId>
-                <version>1.4.7</version>
+                <version>1.5.0</version>
             </dependency>
             <dependency>
                 <groupId>org.tkit.quarkus</groupId>
